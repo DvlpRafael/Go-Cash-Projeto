@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Financeiro - CashGo</title>
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .receitas-icon {
+            color: #4caf50; /* Verde para receitas */
+        }
+
+        .despesas-icon {
+            color: #f44336; /* Vermelho para despesas */
+        }
+
+        #saldo.positivo {
+            color: #4caf50; /* Verde para saldo positivo */
+        }
+
+        #saldo.negativo {
+            color: #f44336; /* Vermelho para saldo negativo */
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <h1>Bem-vindo(a), Usuário!</h1>
+        <nav class="nav">
+            <a href="/" class="btn">Sair</a>
+        </nav>
+    </div>
+</header>
+
+<section class="dashboard-summary">
+    <div class="container">
+        <h2>Resumo Financeiro</h2>
+        <div class="cards">
+            <div class="card">
+                <i class="fas fa-wallet"></i>
+                <h3>Saldo Atual</h3>
+                <p id="saldo" class="positivo">R$ 0,00</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-arrow-up receitas-icon"></i>
+                <h3>Receitas</h3>
+                <p id="receitas">R$ 0,00</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-arrow-down despesas-icon"></i>
+                <h3>Despesas</h3>
+                <p id="despesas">R$ 0,00</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard-input">
+    <div class="container">
+        <h2>Inserir Transação</h2>
+        <form id="transactionForm" class="transaction-form">
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" placeholder="Descrição" required>
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <select id="categoria" required>
+                    <option value="receita">Receita</option>
+                    <option value="despesa">Despesa</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor</label>
+                <input type="number" id="valor" placeholder="Valor" step="0.01" required>
+            </div>
+            <button type="submit" class="btn btn-secondary">Adicionar</button>
+        </form>
+    </div>
+</section>
+
+<section class="dashboard-charts">
+    <div class="container">
+        <h2>Análise Financeira</h2>
+        <div class="chart-container">
+            <canvas id="incomeExpenseChart"></canvas>
+        </div>
+    </div>
+</section>
+
+
+<section class="transaction-history">
+    <div class="container">
+        <h2>Histórico de Transações</h2>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Pesquisar por descrição ou valor...">
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Valor</th>
+            </tr>
+            </thead>
+            <tbody id="transactionTable">
+            <!-- Transações serão adicionadas dinamicamente aqui -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2025 CashGo. Todos os direitos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Configuração inicial do gráfico
+    const ctx = document.getElementById('incomeExpenseChart').getContext('2d');
+    const incomeExpenseChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Receitas', 'Despesas'],
+            datasets: [{
+                data: [0, 0],
+                backgroundColor: ['#4caf50', '#f44336'],
+            }]
+        }
+    });
+
+    let receitas = 0;
+    let despesas = 0;
+
+    const saldoEl = document.getElementById('saldo');
+    const receitasEl = document.getElementById('receitas');
+    const despesasEl = document.getElementById('despesas');
+    const transactionTable = document.getElementById('transactionTable');
+    const transactionForm = document.getElementById('transactionForm');
+    const searchInput = document.getElementById('searchInput');
+
+    // Atualiza os valores no dashboard e o gráfico
+    function atualizarDashboard() {
+        const saldo = receitas - despesas;
+
+        saldoEl.textContent = `R$ ${saldo.toFixed(2)}`;
+        receitasEl.textContent = `R$ ${receitas.toFixed(2)}`;
+        despesasEl.textContent = `R$ ${despesas.toFixed(2)}`;
+
+        // Aplica a classe com base no saldo
+        saldoEl.className = saldo >= 0 ? 'positivo' : 'negativo';
+
+        incomeExpenseChart.data.datasets[0].data = [receitas, despesas];
+        incomeExpenseChart.update();
+    }
+
+    // Adiciona uma transação na tabela
+    function adicionarTransacao(descricao, categoria, valor) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${descricao}</td>
+            <td>${categoria}</td>
+            <td class="${categoria}">R$ ${Number(valor).toFixed(2)}</td>
+        `;
+        transactionTable.appendChild(row);
+    }
+
+    // Adiciona uma nova transação
+    transactionForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const descricao = document.getElementById('descricao').value;
+        const categoria = document.getElementById('categoria').value;
+        const valor = parseFloat(document.getElementById('valor').value);
+
+        fetch('/add_transaction', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ descricao, categoria, valor }),
+        })
+            .then(response => {
+                if (response.ok) {
+                    if (categoria === 'receita') {
+                        receitas += valor;
+                    } else {
+                        despesas += valor;
+                    }
+                    atualizarDashboard();
+                    adicionarTransacao(descricao, categoria, valor);
+                    transactionForm.reset();
+                } else {
+                    console.error('Erro ao salvar transação');
+                }
+            });
+    });
+
+    // Carregar transações ao iniciar a página
+    fetch('/get_transactions')
+        .then(response => response.json())
+        .then(transactions => {
+            transactions.forEach(({ descricao, categoria, valor }) => {
+                if (categoria === 'receita') {
+                    receitas += valor;
+                } else {
+                    despesas += valor;
+                }
+                adicionarTransacao(descricao, categoria, valor);
+            });
+            atualizarDashboard();
+        });
+
+    // Filtrar transações
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        const rows = transactionTable.querySelectorAll('tr');
+
+        rows.forEach(row => {
+            const descricao = row.children[0].textContent.toLowerCase();
+            const valor = row.children[2].textContent.toLowerCase();
+
+            row.style.display = descricao.includes(query) || valor.includes(query) ? '' : 'none';
+        });
+    });
+</script>
+</body>
+</html>

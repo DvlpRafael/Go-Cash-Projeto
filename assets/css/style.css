@@ -1,0 +1,403 @@
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f9fafe;
+    line-height: 1.6;
+    overflow-x: hidden; /* Elimina rolagem horizontal */
+}
+
+/* Utility */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background-color: #ffffff;
+    color: #004aad;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Ajusta a logo para o canto esquerdo da tela */
+.header .logo {
+    height: 60px;
+    margin-left: 0;
+    padding: 0;
+    position: absolute; /* Posiciona a logo fora da estrutura central */
+    left: 0; /* Move a logo para o canto esquerdo */
+}
+
+/* Estilo do menu hamburger */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #004aad;
+    cursor: pointer;
+    z-index: 1100; /* Garante que o botão esteja acima de outros elementos */
+}
+
+/* Ocultar o menu padrão em dispositivos móveis */
+.nav {
+    display: flex;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .nav a {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .nav a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Ajusta a navegação */
+.header .container {
+    display: flex;
+    justify-content: flex-end; /* Alinha a navegação à direita */
+    align-items: center;
+    width: 100%;
+    padding: 0 20px; /* Mantém espaçamento interno */
+}
+
+
+
+.header .btn {
+    text-decoration: none;
+    color: #004aad;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #004aad;
+    transition: 0.3s ease;
+    background-color: transparent;
+}
+
+.header .btn:hover {
+    background-color: #004aad;
+    color: white;
+}
+
+.header .btn-secondary {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+}
+
+.header .btn-secondary:hover {
+    background-color: #cc7a00;
+}
+
+/* Hero Banner Section */
+.hero-banner {
+    height: auto; /* Ajusta a altura automaticamente com base no conteúdo */
+    width: 100vw; /* Garante que ocupa toda a largura da janela */
+    margin: 0; /* Remove qualquer margem padrão */
+    padding: 0; /* Remove qualquer padding padrão */
+    overflow: hidden; /* Elimina qualquer "sobras" indesejadas */
+    display: flex; /* Garante que o conteúdo seja tratado como bloco único */
+    align-items: center; /* Centraliza verticalmente o conteúdo, se necessário */
+}
+
+.hero-banner img {
+    width: 100%; /* Faz a imagem preencher toda a largura */
+    height: auto; /* Ajusta a altura proporcional */
+    display: block; /* Remove espaçamento adicional de imagens inline */
+    object-fit: cover; /* Garante que a imagem seja cortada corretamente se necessário */
+    margin: 0; /* Remove espaçamento adicional da imagem */
+    padding: 0;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 74, 173, 0.85), rgba(0, 74, 173, 0.85)); /* Fundo azul */
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: black;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: #ffffff; /* Branco para contraste */
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #ffffff; /* Branco para manter contraste */
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.cta-button {
+    text-decoration: none;
+    background-color: #ff9900;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    background-color: #cc7a00;
+    transform: translateY(-3px);
+}
+
+.cta-secondary-button {
+    text-decoration: none;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-secondary-button:hover {
+    background-color: white;
+    color: #004aad;
+    transform: translateY(-3px);
+}
+
+
+
+/* Section Styling */
+section {
+    padding: 60px 20px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #004aad;
+}
+
+p {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #555;
+}
+
+/* Features Section */
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-item {
+    background: #f4f6fb;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-item i {
+    font-size: 3rem;
+    color: #004aad;
+    margin-bottom: 15px;
+}
+
+.feature-item h3 {
+    color: #004aad;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Planos Section */
+.planos-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.plano-item {
+    background: #eaf1fb;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.plano-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Blog Section */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+ul li a {
+    color: #004aad;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+ul li a:hover {
+    color: #ff9900;
+}
+
+/* Footer */
+.footer {
+    background-color: #004aad;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+
+/*Login e cadastro*/
+
+.form-container {
+    padding: 60px 20px;
+    background-color: #f9fafe;
+    text-align: center;
+}
+
+.form-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #004aad;
+}
+
+.form-container p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #555;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff9900;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #cc7a00;
+}
+
+form p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+

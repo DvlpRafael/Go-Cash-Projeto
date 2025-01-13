@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CashGo</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <a href="../index.html" class="logo">CashGo</a>
+    </div>
+</header>
+
+<section class="form-container">
+    <div class="container">
+        <h2>Bem-vindo de volta!</h2>
+        <p>Insira suas credenciais para acessar sua conta.</p>
+        <form action="/submit_login" method="POST">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+
+            <button type="submit" class="btn btn-secondary">Login</button>
+        </form>
+
+
+        <p>Não tem uma conta? <a href="register.html">Cadastre-se</a>.</p>
+    </div>
+</section>
+</body>
+</html>

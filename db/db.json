@@ -1,0 +1,80 @@
+[
+  {
+    "name": "João Silva",
+    "email": "dvlprafael@gmail.com",
+    "password": "$2b$10$jHBGSfvybTdsj2WC62tiu.ulwlpXh6EPGcdVdXIbFRondTMs7fOBm",
+    "transactions": [
+      {
+        "descricao": "Salário",
+        "categoria": "receita",
+        "valor": 5000
+      },
+      {
+        "descricao": "Aluguel",
+        "categoria": "despesa",
+        "valor": 1500
+      },
+      {
+        "descricao": "",
+        "categoria": "receita",
+        "valor": null
+      },
+      {
+        "descricao": "",
+        "categoria": "receita",
+        "valor": null
+      }
+    ]
+  },
+  {
+    "name": "teste",
+    "email": "teste@gmail.com",
+    "password": "$2b$10$0nXTi3kfi2TsD8tk10BF6.Xv6wPWw/0KCvZh6R6PvTCMd1w3ruhi6",
+    "transactions": [
+      {
+        "descricao": "",
+        "categoria": "receita",
+        "valor": null
+      },
+      {
+        "descricao": "Salario",
+        "categoria": "receita",
+        "valor": 22
+      }
+    ]
+  },
+  {
+    "name": "Rafael Rodrigues",
+    "email": "raaaa@gmail.com",
+    "password": "$2b$10$COCs0sqWG8HnfEDI8UwY/ebkKrxrMryg9ulUu3pBzI8YQJTi.vq9i",
+    "transactions": [
+      {
+        "descricao": "teste",
+        "categoria": "receita",
+        "valor": 22
+      },
+      {
+        "descricao": "teste2",
+        "categoria": "despesa",
+        "valor": 10
+      }
+    ]
+  },
+  {
+    "name": "Rafael Rodrigues",
+    "email": "dsaudus@gmail.com",
+    "password": "$2b$10$04EprFe.3Sr1ZmBdxdEMkO9TvVX8go5gdEPmIH36hK4hCnGcpOwRu",
+    "transactions": [
+      {
+        "descricao": "Salario",
+        "categoria": "receita",
+        "valor": 2332
+      },
+      {
+        "descricao": "despesas",
+        "categoria": "despesa",
+        "valor": 1000
+      }
+    ]
+  }
+]
