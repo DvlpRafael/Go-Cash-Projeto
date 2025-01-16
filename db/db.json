@@ -23,6 +23,18 @@
         "descricao": "",
         "categoria": "receita",
         "valor": null
+      },
+      {
+        "descricao": "2323",
+        "categoria": "receita",
+        "valor": 32323,
+        "data": "2025-01-16T02:26:55.213Z"
+      },
+      {
+        "descricao": "w232",
+        "categoria": "despesa",
+        "valor": 2323,
+        "data": "2025-01-16T02:27:59.831Z"
       }
     ]
   },
@@ -74,6 +86,107 @@
         "descricao": "despesas",
         "categoria": "despesa",
         "valor": 1000
+      }
+    ]
+  },
+  {
+    "name": "Rafael Rodrigues",
+    "email": "dsadas7y8duhsad@gmail.com",
+    "password": "$2b$10$B72uQouJXLXoUPUI67caneb5i7HLucRsHjJFA.zOoFPB3Qf1t2Szm",
+    "transactions": [
+      {
+        "descricao": "salario",
+        "categoria": "receita",
+        "valor": 15000
+      },
+      {
+        "descricao": "skin de league of legends",
+        "categoria": "despesa",
+        "valor": 2000
+      },
+      {
+        "descricao": "PC gamer ",
+        "categoria": "receita",
+        "valor": 5000
+      },
+      {
+        "descricao": "PC GAMER",
+        "categoria": "despesa",
+        "valor": 5000
+      },
+      {
+        "descricao": "PC GAMER ",
+        "categoria": "despesa",
+        "valor": 5000,
+        "data": "2025-01-15T12:00:00.000Z"
+      }
+    ]
+  },
+  {
+    "name": "Rafael Rodrigues",
+    "email": "2323232@gmail.com",
+    "password": "$2b$10$mdP6PAIJ./YGD8UGtKrAvenMjMsztEG7iUayYqtK3/ALJCY9bEgVm",
+    "transactions": [
+      {
+        "descricao": "232",
+        "categoria": "receita",
+        "valor": 222,
+        "data": "2025-01-16T02:28:22.886Z"
+      },
+      {
+        "descricao": "ateste",
+        "categoria": "despesa",
+        "valor": 222,
+        "data": "2025-01-16T02:41:26.713Z"
+      }
+    ]
+  },
+  {
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "password": "$2b$10$i.lEAR3toCw7DqukmYkDu.K7RUFWG45y3fbY3cW.mhgpnAkxhRgoy",
+    "transactions": [
+      {
+        "descricao": "222",
+        "categoria": "receita",
+        "valor": 222,
+        "data": "2025-01-16T02:45:33.556Z"
+      },
+      {
+        "descricao": "222",
+        "categoria": "receita",
+        "valor": 222,
+        "data": "2025-01-16T02:45:34.128Z"
+      },
+      {
+        "descricao": "222",
+        "categoria": "receita",
+        "valor": 222,
+        "data": "2025-01-16T02:45:34.340Z"
+      },
+      {
+        "descricao": "2323",
+        "categoria": "despesa",
+        "valor": 22,
+        "data": "2025-01-16T03:32:09.018Z"
+      },
+      {
+        "descricao": "2323",
+        "categoria": "despesa",
+        "valor": 22,
+        "data": "2025-01-16T03:32:10.585Z"
+      },
+      {
+        "descricao": "2323",
+        "categoria": "despesa",
+        "valor": 22,
+        "data": "2025-01-16T03:32:11.090Z"
+      },
+      {
+        "descricao": "fasfa",
+        "categoria": "despesa",
+        "valor": 2222,
+        "data": "2025-01-16T03:32:37.331Z"
       }
     ]
   }
